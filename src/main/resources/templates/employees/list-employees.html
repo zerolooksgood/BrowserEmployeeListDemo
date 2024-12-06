@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"> <!--Defines the namespace as the thymeleaf namespace-->
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Directory</title>
+
+    <!--Linking the bootstrap css stylesheet-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+<div class="container"> <!--Class is simply cosmetic-->
+
+    <h3>Employee Directory</h3>
+    <hr>
+
+    <a th:href="@{/employees/showFormForAdd}"
+       class="btn btn-success mb-3"> <!--Links the button to the showFormForAdd page-->
+        Add Employee
+    </a>
+
+    <table class="table table-striped table-bordered"> <!--We'll be using a table to display all the employees-->
+        <thead class="table-dark"> <!--This is the header for the table-->
+            <tr> <!--The lines below will define the different columns-->
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+            <tbody>
+                <tr th:each="employee : ${employees}"> <!--Here we're accessing the data stored in the model-->
+                    <td th:text="${employee.lastName}"/>
+                    <td th:text="${employee.firstName}"/>
+                    <td th:text="${employee.email}"/>
+                    <td>
+                        <a th:href="@{/employees/showFormForUpdate(employeeId=${employee.id})}"
+                           class="btn btn-outline-success btn-sm"> <!--Here we're sending the id of the employee that the button belongs to along with the redirect-->
+                            Update
+                        </a>
+                        <a th:href="@{/employees/showFormForDelete(employeeId=${employee.id})}"
+                           class="btn btn-outline-danger btn-sm">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+</div>
+</body>
+</html>

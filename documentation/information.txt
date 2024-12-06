@@ -1,0 +1,16 @@
+Important information:
+Much of this code is based on different courses on Udemy by LUV2CODE. It is not directly their code, but this is where the knowledge originates. This is why my design may appear similar to what he has on his courses, although it is not the exact same.
+All the code is explained in comments, some of the code have more in-depth explanations in the "advanced-explanations.txt" file, these pieces of code have ({number}) in their comments that correspond to their advanced explanation.
+Note that this repository does NOT include the database, this you're going to have to set up yourself.
+If a piece of code lacks comments, then there is a high chance that similar code has already been commented earlier in the code.
+
+Other information:
+This system SHOULD work with most common databases, I am just using postGreSQL in this example. Keyword, SHOULD. This does not always mean it actually does.
+The spring-boot-devtools dependency is optional, but recommended.
+The template file for the project was created on start.spring.io
+Code that is literal (has it's function in it's spelling) will not be explained.
+The comments for the code is either on the same line as it or on the line above.
+This project uses bootstrap CSS styling.
+
+This project was last updated: 5th of December 2024
+This project was last in a functional state: 5th of December 2024
