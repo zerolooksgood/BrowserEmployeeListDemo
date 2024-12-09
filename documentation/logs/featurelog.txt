@@ -1,9 +1,0 @@
-This file contains a list of all the features added in a certain version of the program
-
-
-Version 1 (05.12.24):
-Added home page which displays all the employees in the database.
-Added new employee page which allows you to add a new employee to the database.
-Added update employee function, technically the same page as the add employee page, but with different functionality.
-Added the page for deleting employees.
-Added functionality that reroutes user from localhost:1408 to localhost:1408/employees/list

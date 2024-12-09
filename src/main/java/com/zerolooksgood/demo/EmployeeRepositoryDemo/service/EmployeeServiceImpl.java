@@ -22,7 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public Employee findById(int id) {
-        Optional<Employee> temp = employeeRepository.findById(id); //Searches for the employee in the database by id and saves it as an optional variable;
+        Optional<Employee> temp = employeeRepository.findById(id); //Searches for the employee in the database by id and saves it as an optional variable (1);
 
         if (temp.isPresent()) { //Checks if there was anything saved to the optional variable
             return temp.get(); //returns the Employee stored in the optional variable

@@ -30,9 +30,9 @@
         </thead>
             <tbody>
                 <tr th:each="employee : ${employees}"> <!--Here we're accessing the data stored in the model-->
-                    <td th:text="${employee.lastName}"/>
-                    <td th:text="${employee.firstName}"/>
-                    <td th:text="${employee.email}"/>
+                    <td th:text="${employee.lastName}">
+                    <td th:text="${employee.firstName}">
+                    <td th:text="${employee.email}">
                     <td>
                         <a th:href="@{/employees/showFormForUpdate(employeeId=${employee.id})}"
                            class="btn btn-outline-success btn-sm"> <!--Here we're sending the id of the employee that the button belongs to along with the redirect-->

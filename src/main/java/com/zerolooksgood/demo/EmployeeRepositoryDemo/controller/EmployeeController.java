@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller //Defines this class as a controller
-@RequestMapping("/employees") //This defines the first part of the url you'll be using to see the application in your browser
+@Controller //Defines this class as a controller (1)
+@RequestMapping("/employees") //This defines the first part of the url you'll be using to see the application in your browser (2)
 public class EmployeeController {
 
-    private EmployeeService employeeService;
+    private EmployeeService employeeService; //Defines employeeServices so that the class can use it
 
-    public EmployeeController(EmployeeService theEmployeeService) {
+    public EmployeeController(EmployeeService theEmployeeService) { //Constructs the class, spring automatically provides the class with EmployeeService
         employeeService = theEmployeeService;
     }
 
-    @GetMapping("/list") //Defines the url of this specific page (in this case it would be localhost:1408/employees/list)
+    @GetMapping("/list") //Defines the GetMapping for this method as /list (3)
     public String list(Model theModel) {
         //For more information on Model see (4)
         List<Employee> employees = employeeService.findAll(); //Uses the function from EmployeeService to retrieve all the information in the database
@@ -39,7 +39,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/showFormForUpdate")
-    public String showFormForUpdate(@RequestParam("employeeId") int theId, Model theModel) { //The request parameter is information that this method is provided with when it is called, this means that it is called by a different page which provides it with data
+    public String showFormForUpdate(@RequestParam("employeeId") int theId, Model theModel) { //Looks for a parameter and converts it to an integer (5)
 
         Employee theEmployee = employeeService.findById(theId);
 
@@ -47,9 +47,9 @@ public class EmployeeController {
 
         return "employees/employee-form";
     }
-
+    //Note that this page doesn't actually contain the code required to delete anyone from the database
     @GetMapping("/showFormForDelete")
-    public String showFormForDelete(@RequestParam("employeeId") int theId, Model theModel) { //Note that this page doesn't actually contain the code required to delete anyone from the database
+    public String showFormForDelete(@RequestParam("employeeId") int theId, Model theModel) {
 
         Employee theEmployee = employeeService.findById(theId);
 
@@ -58,7 +58,7 @@ public class EmployeeController {
         return "employees/delete-form";
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/delete") //(6)
     public String deleteEmployee(@ModelAttribute("employee") Employee theEmployee) { //This method actually takes the entire object instead of an id as the parameter
 
         employeeService.deleteById(theEmployee.getId());
