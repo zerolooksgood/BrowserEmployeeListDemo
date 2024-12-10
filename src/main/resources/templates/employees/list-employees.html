@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org"> <!--Defines the namespace as the thymeleaf namespace-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <!--Defines the namespaces-->
 <head>
     <meta charset="UTF-8">
     <title>Employee Directory</title>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container"> <!--Class is simply cosmetic-->
-
+    <br><br>
     <h3>Employee Directory</h3>
     <hr>
 
@@ -22,6 +22,7 @@
     <table class="table table-striped table-bordered"> <!--We'll be using a table to display all the employees-->
         <thead class="table-dark"> <!--This is the header for the table-->
             <tr> <!--The lines below will define the different columns-->
+                <th>Id</th>
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Email</th>
@@ -30,6 +31,7 @@
         </thead>
             <tbody>
                 <tr th:each="employee : ${employees}"> <!--Here we're accessing the data stored in the model-->
+                    <td th:text="${employee.id}">
                     <td th:text="${employee.lastName}">
                     <td th:text="${employee.firstName}">
                     <td th:text="${employee.email}">
@@ -46,6 +48,10 @@
                 </tr>
             </tbody>
     </table>
+    <form action="#" th:action="@{/logout}" method="POST">
+        <input class="btn btn-outline-dark" type="submit" value="Logout"/>
+    </form>
+    <hr>
 </div>
 </body>
 </html>

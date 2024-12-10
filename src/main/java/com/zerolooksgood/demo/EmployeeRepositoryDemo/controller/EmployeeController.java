@@ -34,6 +34,7 @@ public class EmployeeController {
         Employee theEmployee = new Employee(); //Creates a new empty employee object
 
         theModel.addAttribute("employee", theEmployee);
+        theModel.addAttribute("header", "Save New Employee"); //Sends the custom title to the form, this is because both the edit and save function use the same html file
 
         return "employees/employee-form";
     }
@@ -44,6 +45,7 @@ public class EmployeeController {
         Employee theEmployee = employeeService.findById(theId);
 
         theModel.addAttribute("employee", theEmployee);
+        theModel.addAttribute("header", "Edit Employee Information");
 
         return "employees/employee-form";
     }

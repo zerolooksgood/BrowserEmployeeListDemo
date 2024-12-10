@@ -12,17 +12,17 @@
     <h3>Employee Directory</h3>
     <hr>
 
-    <p class="h4 mb-4">Save Employee</p>
+    <p class="h4 mb-4" th:text="${header}"/> <!--Displays the title depending on the mapping the form is comming from, this is because this form is used for multiple purposes-->
     <!--We're using a form that's linked to the object in the model, this means that anything we fill into the fields can be automatically assigned to the object-->
     <form action="#" th:action="@{/employees/save}"
           th:object="${employee}" method="POST"> <!--The action method decides where the form sends the data after it has been submitted-->
         <input type="hidden" th:field="*{id}"> <!--The ID field is hidden, this is so that we can't change the objects ID, this allows us to use the same form for updating and saving the employee-->
         <input type="text" th:field="*{firstName}"
-               class="form-control mb-4 w-25" placeholder="First Name">
+               class="form-control mb-4 w-25" placeholder="First Name" required>
         <input type="text" th:field="*{lastName}"
-               class="form-control mb-4 w-25" placeholder="Last Name">
-        <input type="text" th:field="*{email}"
-               class="form-control mb-4 w-25" placeholder="Email">
+               class="form-control mb-4 w-25" placeholder="Last Name" required>
+        <input type="email" th:field="*{email}"
+               class="form-control mb-4 w-25" placeholder="Email" required>
         <button type="submit" class="btn btn-success col-2">Save</button> <!--This button submits the form, updating the model with the filed data and sending it to action method-->
     </form>
 
