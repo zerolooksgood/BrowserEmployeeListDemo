@@ -1,5 +1,0 @@
-This file holds my development logs from working on the project.
-
-
-05.12.24:
-Today I've worked with the core functionality of the program and commenting the code to the best of my ability, I have not had time to conduct any thorough testing of the application and there are many features that the application still lacks, such as requiring you to log in to your user and to restricting the save, update, and delete restrictions. The program also still allows for you to submit and empty form, leading to the creating of an empty employee in the database.
