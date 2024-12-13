@@ -13,8 +13,7 @@
     <br><br>
     <h3>Employee Directory</h3>
     <hr>
-
-    <a th:href="@{/employees/showFormForAdd}"
+    <a sec:authorize="hasRole('MANAGER')" th:href="@{/employees/showFormForAdd}"
        class="btn btn-success mb-3"> <!--Links the button to the showFormForAdd page-->
         Add Employee
     </a>
@@ -26,7 +25,7 @@
                 <th>Last Name</th>
                 <th>First Name</th>
                 <th>Email</th>
-                <th>Action</th>
+                <th sec:authorize="hasRole('MANAGER')" >Action</th>
             </tr>
         </thead>
             <tbody>
@@ -35,12 +34,12 @@
                     <td th:text="${employee.lastName}">
                     <td th:text="${employee.firstName}">
                     <td th:text="${employee.email}">
-                    <td>
+                    <td sec:authorize="hasRole('MANAGER')" >
                         <a th:href="@{/employees/showFormForUpdate(employeeId=${employee.id})}"
                            class="btn btn-outline-success btn-sm"> <!--Here we're sending the id of the employee that the button belongs to along with the redirect-->
                             Update
                         </a>
-                        <a th:href="@{/employees/showFormForDelete(employeeId=${employee.id})}"
+                        <a sec:authorize="hasRole('ADMINISTRATOR')" th:href="@{/employees/showFormForDelete(employeeId=${employee.id})}"
                            class="btn btn-outline-danger btn-sm">
                             Delete
                         </a>
@@ -51,6 +50,7 @@
     <form action="#" th:action="@{/logout}" method="POST">
         <input class="btn btn-outline-dark" type="submit" value="Logout"/>
     </form>
+    <br>
     <hr>
 </div>
 </body>
